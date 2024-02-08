@@ -1,0 +1,47 @@
+-- Création de la base de données
+CREATE DATABASE IF NOT EXISTS cda;
+
+-- Utilisation de la base de données
+USE cda;
+
+-- Création de la table "categories"
+CREATE TABLE IF NOT EXISTS categories (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  nom          VARCHAR(100) NOT NULL,
+  created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Création de la table "utilisateurs"
+CREATE TABLE IF NOT EXISTS utilisateurs (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  nom             VARCHAR(100) NOT NULL,
+  photo           VARCHAR(150) NOT NULL,
+  created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Création de la table "Podcasts"
+CREATE TABLE IF NOT EXISTS posts (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  titre         VARCHAR(100) NOT NULL,
+  corps         TEXT NOT NULL,
+  extrait       VARCHAR(300) NOT NULL,
+  fichier_image VARCHAR(150),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  id_categorie BIGINT UNSIGNED,
+  FOREIGN KEY (id_categorie) REFERENCES categories (id) ON DELETE SET NULL
+);
+
+-- Création de la table "commentaires"
+CREATE TABLE IF NOT EXISTS commentaires (
+  id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+  corps       TEXT NOT NULL,
+  created_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at   TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  id_post BIGINT UNSIGNED,
+  id_utilisateur BIGINT UNSIGNED,
+  FOREIGN KEY (id_post) REFERENCES posts (id) ON DELETE SET NULL,
+  FOREIGN KEY (id_utilisateur) REFERENCES utilisateurs (id) ON DELETE SET NULL
+);
