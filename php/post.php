@@ -30,6 +30,7 @@ $post = $query -> fetch(PDO::FETCH_ASSOC);
 
     <nav>
         <ul>
+            <li><a href="index.php">Accueil</a></li>
             <li><a href="create.php">Créer un post</a></li>
             <li><a href="update.php">Modifier un post</a></li>
             <li><a href="delete.php">Supprimer un post</a></li>
