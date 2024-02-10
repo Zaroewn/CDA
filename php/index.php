@@ -3,9 +3,11 @@
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
-$query = $pdo -> query('SELECT * FROM posts', PDO::FETCH_ASSOC);
+$query = $pdo -> query('SELECT p.id, p.titre, p.extrait, p.fichier_image, p.created_at, c.nom AS categorie_nom 
+FROM posts p
+LEFT JOIN categories c ON p.id_categorie = c.id');
 
-$posts = $query -> fetchAll();
+$posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 // var_dump($posts);
 
@@ -41,7 +43,10 @@ $posts = $query -> fetchAll();
                             "<img src=\"../src/$post[fichier_image]\">" ,
                         "</div></a>",
                         "<h2>" .$post['titre']. "</h2>",
-                        "<span>" .$post['created_at']. "</span>",
+                        "<div class=\"categorie\">",
+                            "<h3>" .$post['categorie_nom']. " - " . "</h3>",
+                            "<span>" .$post['created_at']. "</span>",
+                        "</div>",
                         "<p>" .$post['extrait']. "</p>",
                         "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=$post[id]'\">Lire la suite</button>",
                     "</div>";

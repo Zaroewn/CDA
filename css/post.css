@@ -25,6 +25,10 @@ nav {
     margin-bottom: 60px;
 }
 
+h2 {
+    font-size: 50px;
+}
+
 a {
 	text-decoration: none;
     padding: 10px;
@@ -70,66 +74,39 @@ footer {
     width: 60%;
     margin: auto;
     text-align: center;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 .post {
-    cursor: pointer;
+    padding-top: 15px;
     overflow: hidden;
     background: white;
-    padding-bottom: 15px;
     border: 0px solid black;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin-bottom: 25px;
-    transition: 0.5s;
 }
-
-.post:hover{
-    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-    transform: scale(1.1);
-    transition: 0.5s;
-}
-
 
 .post a {
     padding: 0px;
 }
 
-.post button {
-    cursor: pointer;
-    background: #1D1D1D;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    font-size: 14px;
-    padding: 10px 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
+.corps {
+    align-items: center;
+    width: 85%;
+    display: flex;
+    margin: 30px auto;
 }
 
-.post button:hover {
-    opacity: 0.7;
-}
-
-.picture{
-    margin: auto;
-    width: 100%;
-    height: auto;
-    margin-bottom: 15px;
-}
-
-.picture:hover {
-    opacity: 0.8;
+.corps p {
+    text-align: left;
 }
 
 .categorie {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    margin: 20px;
 }
 
 .categorie h3 {
