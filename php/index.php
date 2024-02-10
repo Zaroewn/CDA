@@ -5,7 +5,8 @@ $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
 $query = $pdo -> query('SELECT p.id, p.titre, p.extrait, p.fichier_image, p.created_at, c.nom AS categorie_nom 
 FROM posts p
-LEFT JOIN categories c ON p.id_categorie = c.id');
+LEFT JOIN categories c ON p.id_categorie = c.id
+ORDER BY created_at DESC');
 
 $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 
