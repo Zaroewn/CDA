@@ -1,44 +1,67 @@
-<?php declare(strict_types = 1);
+<?php 
 
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
-$query = $pdo -> query('SELECT * FROM posts', PDO::FETCH_ASSOC);
+$query = $pdo -> prepare('SELECT p.id, p.titre, p.corps, p.fichier_image, p.created_at, c.nom AS categorie_nom 
+FROM posts p
+LEFT JOIN categories c ON p.id_categorie = c.id
+WHERE P.id = :id');
 
-$posts = $query -> fetchAll();
-
-var_dump($posts);
-
+$query -> bindValue(':id', $_GET['id'], PDO::PARAM_INT);
+$query -> execute();
+$post = $query -> fetch(PDO::FETCH_ASSOC);
+// var_dump($post);
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/podcast.css">
-    <title>Choix des post</title>
+    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <title>BookX | Le meilleur de la lecture</title>
 </head>
-
 <body>
-    <div class="grid-container">
-        <div class="item1"></div>
 
-        <div class="item2">
+    <header>
+        <h1>BookX</h1>
+    </header>
 
-            <h1>SpaceCasts</h1>
+    <nav>
+        <ul>
+            <li><a href="create.php">Créer un post</a></li>
+            <li><a href="update.php">Modifier un post</a></li>
+            <li><a href="delete.php">Supprimer un post</a></li>
+        </ul>
+    </nav>
 
-            <?php
+    <section class="grid">
+        <?php
+                echo "<div class=\"post\">",
 
-                echo "<div class=\"div\">",
-                        "<p>" .$podcastSelection['nom']. "</p>",
-                        "<span>" .$podcastSelection['created_at']. "</span>",
-                        "<h2>" .$podcastSelection['titre']. "</h2>",
-                        "<audio src=\"$podcastSelection[fichier_audio]\" controls></audio>",
-                        "<p>" .$podcastSelection['corps']. "</p>",
-                    "</div>"; 
+                        "<h2>" .$post['titre']. "</h2>",
 
-                echo '<br><br>';
-            ?>
+                        "<div class=\"corps\">",
+                            "<img src=\"../src/$post[fichier_image]\">" ,
+                            "<p>" .$post['corps']. "</p>",
+                        "</div>",
+
+                        "<div class=\"categorie\">",
+                            "<h3>" .$post['categorie_nom']. " - " . "</h3>",
+                        "<span>" .$post['created_at']. "</span>",
+                    "</div>",
+
+                    "</div>";
+            
+        ?>
+    </section>
+
+    <footer>
+        <h3>
+            Made with <span>&#x2661;</span> by BookX.fr
+        </h3>
+    </footer>
+
+</body>
+</html>
