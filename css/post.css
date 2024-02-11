@@ -7,6 +7,8 @@
 body {
     background: #f4f7f6;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -27,6 +29,11 @@ nav {
 
 h2 {
     font-size: 50px;
+}
+
+h5 {
+    text-decoration: underline;
+    font-size: 14px;
 }
 
 a {
@@ -60,6 +67,14 @@ p {
     padding: 20px;
  }
 
+span {
+    font-size: 12px;
+}
+
+img {
+    margin: 15px;
+}
+
 footer { 
 	background:#1D1D1D;
 	color: white;
@@ -83,7 +98,7 @@ footer {
     border: 0px solid black;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 
 .post a {
@@ -113,3 +128,47 @@ footer {
     font-size: 18px;
     font-weight: 500;
 }
+
+.commentaires {
+    width: 60%;
+    padding-top: 5px;
+    background: white;
+    border: 0px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    margin: auto auto 25px auto;
+    
+    overflow: hidden;
+}
+
+.commentaires h3 {
+    margin: 10px;
+}
+
+.commentaire {
+    padding-top: 15px;
+    overflow: hidden;
+    background: rgb(240, 240, 240);
+    border: 0px solid black;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 95%;
+    margin: auto;
+}
+
+.img {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.img p{
+padding: 0;
+text-align: left;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+

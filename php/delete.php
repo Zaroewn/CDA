@@ -58,11 +58,5 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
             <br><br>
         </form>
     </section>
-
-    <footer>
-        <h3>
-            Made with <span>&#x2661;</span> by BookX.fr
-        </h3>
-    </footer>
 </body>
 </html>
