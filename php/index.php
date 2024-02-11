@@ -9,9 +9,6 @@ LEFT JOIN categories c ON p.id_categorie = c.id
 ORDER BY created_at DESC');
 
 $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
-
-// var_dump($posts);
-
 ?>
 
 <!DOCTYPE html>
@@ -31,7 +28,7 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
     <nav>
         <ul>
             <li><a href="create.php">Créer un post</a></li>
-            <li><a href="update.php">Modifier un post</a></li>
+            <li><a href="choixModif.php">Modifier un post</a></li>
             <li><a href="delete.php">Supprimer un post</a></li>
         </ul>
     </nav>
@@ -40,16 +37,16 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
         <?php
             foreach ($posts as $post) {
                 echo "<div class=\"post\">",
-                        "<a href=\"post.php?id=$post[id]\"><div class=\"picture\">",
-                            "<img src=\"../src/$post[fichier_image]\">" ,
+                        "<a href=\"post.php?id=". htmlspecialchars(strval($post['id'])) . "\"><div class=\"picture\">",
+                            "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
                         "</div></a>",
-                        "<h2>" .$post['titre']. "</h2>",
+                        "<h2>" .htmlspecialchars($post['titre']). "</h2>",
                         "<div class=\"categorie\">",
-                            "<h3>" .$post['categorie_nom']. " - " . "</h3>",
-                            "<span>" .$post['created_at']. "</span>",
+                            "<h3>" .htmlspecialchars($post['categorie_nom']). " - " . "</h3>",
+                            "<span>" .htmlspecialchars($post['created_at']). "</span>",
                         "</div>",
-                        "<p>" .$post['extrait']. "</p>",
-                        "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=$post[id]'\">Lire la suite</button>",
+                        "<p>" .htmlspecialchars($post['extrait']). "</p>",
+                        "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=" .htmlspecialchars(strval($post['id'])). "'\">Lire la suite</button>",
                     "</div>";
             }
         ?>

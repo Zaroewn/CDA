@@ -106,7 +106,7 @@ footer {
     background: #1D1D1D;
     color: white;
 }
- input::file-selector-button:hover {
+ input::file-selector-button:hover, input[type=submit]:hover {
     background: grey;
 }
 
@@ -146,7 +146,6 @@ textarea {
     background: #1D1D1D;
     color: white;
   }
-
 
 /* CLASS */
 

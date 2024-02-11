@@ -41,16 +41,16 @@ $post = $query -> fetch(PDO::FETCH_ASSOC);
         <?php
                 echo "<div class=\"post\">",
 
-                        "<h2>" .$post['titre']. "</h2>",
+                        "<h2>" .htmlspecialchars($post['titre']). "</h2>",
 
                         "<div class=\"corps\">",
-                            "<img src=\"../src/$post[fichier_image]\">" ,
-                            "<p>" .$post['corps']. "</p>",
+                            "<img src=\"../src/" .htmlspecialchars($post['fichier_image']). "\">" ,
+                            "<p>" .htmlspecialchars($post['corps']). "</p>",
                         "</div>",
 
                         "<div class=\"categorie\">",
-                            "<h3>" .$post['categorie_nom']. " - " . "</h3>",
-                        "<span>" .$post['created_at']. "</span>",
+                            "<h3>" .htmlspecialchars($post['categorie_nom']). " - " . "</h3>",
+                        "<span>" .htmlspecialchars($post['created_at']). "</span>",
                     "</div>",
 
                     "</div>";

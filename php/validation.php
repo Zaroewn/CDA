@@ -1,14 +1,5 @@
 <?php 
- $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
- $statut = 'Veuillez rentrer une catégorie';
- $statut1 = 'La catégorie à bien été ajoutée';
-
-// requête pour entrer une nouvelle catégorie en base de données.
-if (! empty($_POST['nom'])) {
-    $query = $pdo->prepare('INSERT INTO categories (nom) VALUES (:nom)');
-    $query->bindValue('nom', $_POST['nom'], PDO::PARAM_STR);
-    $query->execute();
-}
+ $statut = 'L\'article a bien été modifié.';
 ?>
 
 <!DOCTYPE html>
@@ -34,12 +25,9 @@ if (! empty($_POST['nom'])) {
     </nav>
 
     <section>
-        <?php if (empty($_POST['nom'])) : ?>
+    
             <h2><?= $statut?></h2>
-        <?php else : ?>
-            <h2><?= $statut1?></h2>
-        <?php endif ?>
-        <button onclick="location.href='create.php'">Retourner sur la page de création</button>
+        <button onclick="location.href='choixModif.php'">Retourner sur la page du choix des posts</button>
     </section>
 </body>
 </html>
