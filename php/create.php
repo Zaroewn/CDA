@@ -1,23 +1,33 @@
 <?php
- $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
- $statut = '*Veuillez renseigner tout les champs';
+
+// Connexion à la Base de données
+$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+
+$statut = '*Veuillez renseigner tout les champs';
 $statut1 = 'Nouvelle article crée :)';
 
-    // Validation du formulaire...
-    if(isset($_FILES['image']) && $_FILES['image']['error'] == 0 ) {
-        // 1mo = 1 000 000 d'octets
-        // Ou lui demande de vérifier si la taille de l'image fait bien moins de 3mo(méga octets)
-        if($_FILES['image']['size'] <= 3000000) {
-            $informationsImage = pathinfo($_FILES['image']['name']); // récupère dans un tableau toutes les infos de l'image grâce à la fonction pathinfo().
-            $extensionImage = $informationsImage['extension']; // On récupère dans une variable la clé ['extension'] du tableau $informationsImage.
-            $extensionsArray = array('png', 'jpg', 'gif', 'JPEG'); // On créer un tableau avec les extensions que l'on autorise.
-            if(in_array($extensionImage, $extensionsArray)) {
-                move_uploaded_file($_FILES['image']['tmp_name'], '../src/'. basename($_FILES['image']['name'])); 
-            }
-        } 
-    }
-    if (!empty($_POST['titre']) && !empty($_POST['corps']) && !empty($_FILES['image']['name']) && !empty($_POST['categorie'])) {
+// Mise en place d'une structure Try/Catch pour capturer les éventuelles erreurs
+try {
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        // Vérifie si la taille de l'image est inférieure ou égale à 3 Mo
+        if ($_FILES['image']['size'] <= 3000000) {
+            $informationsImage = pathinfo($_FILES['image']['name']);
+            $extensionImage = $informationsImage['extension'];
+            $extensionsArray = array('png', 'jpg', 'gif', 'JPEG');
 
+            // Vérifie si l'extension est autorisée (présente dans notre tableau $extensionsArray)
+            if (in_array($extensionImage, $extensionsArray)) {
+                move_uploaded_file($_FILES['image']['tmp_name'], '../src/' . basename($_FILES['image']['name']));
+            } else {
+                throw new Exception("L'extension du fichier n'est pas autorisée.");
+            }
+        } else {
+            throw new Exception("La taille du fichier dépasse la limite autorisée (3 Mo).");
+        }
+    }
+    // Vérifie que la superglobale $_POST est bien renseignée.
+    if (!empty($_POST['titre']) && !empty($_POST['corps']) && !empty($_FILES['image']['name']) && !empty($_POST['categorie'])) {
+        // Requête préparées pour éviter les injections SQL
         $query = $pdo->prepare('INSERT INTO posts (titre, corps, extrait, fichier_image, id_categorie) VALUES (:titre, :corps, :extrait, :fichier_image, :id_categorie)');
         $query->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
         $query->bindValue('corps', $_POST['corps'], PDO::PARAM_STR);
@@ -25,16 +35,16 @@ $statut1 = 'Nouvelle article crée :)';
         $query->bindValue('fichier_image', $_FILES['image']['name'], PDO::PARAM_STR);
         $query->bindValue('id_categorie', $_POST['categorie'], PDO::PARAM_INT);
         $query->execute();
-    } 
-        
-    
+    }
+} catch (Exception $e) {
+    echo "Erreur : " . $e->getMessage();
+}    
 
-// Récupération des catégories
-$query = $pdo -> query('SELECT id, nom FROM categories');
+// Récupération des catégories pour l'input <select>
+$query = $pdo -> query('SELECT id, nom FROM categories ORDER BY created_at ASC');
 $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,7 +63,7 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
     <nav>
         <ul>
             <li><a href="index.php">Accueil</a></li>
-            <li><a href="update.php">Modifier un post</a></li>
+            <li><a href="choixModif.php">Modifier un post</a></li>
             <li><a href="delete.php">Supprimer un post</a></li>
         </ul>
     </nav>
@@ -72,8 +82,10 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
             <label for="categorie">Catégorie du post :</label><br>
             <select name="categorie" id="categorie">
+                <!-- Mise en place d'une boucle foreach pour itéré toutes le entrées de mon tableau contenu dans la variable $categories -->
                 <?php foreach ($categories as $categorie) : ?>
-                    <option value="<?= $categorie['id']?>"><?=$categorie['nom']?></option>
+                    <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
+                    <option value="<?=htmlspecialchars($categorie['id'])?>"><?=htmlspecialchars(strval($categorie['id']))?> - <?=htmlspecialchars($categorie['nom'])?></option>
                 <?php endforeach ?>
             </select>
             <h4 id="addCategory">Ajouter une catégorie</h4>
@@ -85,7 +97,7 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
             <input type="submit" value="Créer le post">
         </form>
-
+        <!-- Structure If/Else pour envoyer un message d'échec ou de réussite en cas de création du nouveau post -->
         <?php if (empty($_POST['titre']) || empty($_POST['corps']) || empty($_FILES['image']['name']) || empty($_POST['categorie'])) : ?>
             <h3><?= $statut?></h3>
         <?php else : ?>
