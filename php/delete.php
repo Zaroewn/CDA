@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
@@ -9,7 +9,7 @@ if (!empty($_POST)) {
 
     if (!$errors) {
         try {
-            deletePost($pdo, $_POST['id']);
+            deletePost($pdo);
             echo "Le post a bien été supprimé";
         } catch (PDOException $e) {
             $errors[] = "Erreur lors de la suppression : " . $e->getMessage();
