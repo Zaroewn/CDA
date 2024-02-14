@@ -1,13 +1,14 @@
 <?php 
+
+require_once __DIR__.'/functions.php';
+
  $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
  $statut = 'Veuillez rentrer une catégorie';
  $statut1 = 'La catégorie à bien été ajoutée';
 
 // requête pour entrer une nouvelle catégorie en base de données.
 if (! empty($_POST['nom'])) {
-    $query = $pdo->prepare('INSERT INTO categories (nom) VALUES (:nom)');
-    $query->bindValue('nom', $_POST['nom'], PDO::PARAM_STR);
-    $query->execute();
+    addCategorie($pdo, $_POST['nom']);
 }
 ?>
 
@@ -34,6 +35,7 @@ if (! empty($_POST['nom'])) {
     </nav>
 
     <section>
+        <!--  La structure If/Else vérifie ici si la superglobale $_POST['nom'] est vide ou non, est affecte un message en fonction de la réponse-->
         <?php if (empty($_POST['nom'])) : ?>
             <h2><?= $statut?></h2>
         <?php else : ?>

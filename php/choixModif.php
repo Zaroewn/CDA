@@ -2,7 +2,7 @@
 
  $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
-// Récupération des posts dans le <select>
+// Récupération des posts dans le <select> pour choisir le post à modifier
 $query = $pdo -> query('SELECT id, titre, corps FROM posts');
 $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -34,7 +34,9 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 
         <form action="update.php" method="get">
             <select name="id" id="post">
+            <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post -->
                 <?php foreach ($posts as $post) : ?>
+                     <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
                     <option value="<?=htmlspecialchars(strval($post['id']))?>"><?=htmlspecialchars($post['id'])?> - <?=htmlspecialchars($post['titre'])?></option>
                 <?php endforeach ?>
             </select>

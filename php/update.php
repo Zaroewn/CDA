@@ -10,13 +10,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
     if (!$errors) {
         try {
-            $query = $pdo->prepare('UPDATE posts SET titre = :titre, corps = :corps, extrait = :extrait WHERE id = :id');
-            $query->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
-            $query->bindValue('corps', $_POST['corps'], PDO::PARAM_STR);
-            $query->bindValue('extrait', substr($_POST['corps'], 0, 300), PDO::PARAM_STR);
-            $query->bindValue('id', $_POST['id'], PDO::PARAM_INT);
-            $query->execute();
-
+            updatePost($pdo, $_POST['titre'], $_POST['corps'], $_POST['id']);
             header('location: ../php/validation.php');
             exit();
         } catch (PDOException $e) {
