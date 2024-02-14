@@ -1,22 +1,22 @@
-<?php 
+<?php
 
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
 // Récupération du post sélectionné via son id avec la fonction getPost()
-$post = getPost($pdo, $_GET['id']);
-    // Si l'id du post n'existe pas, redirection vers une page 404
-    if(empty($post)) {
-        http_response_code(404);
-        header('HTTP/1.0 404 Not Found');
-        readfile('../html/404.html');
-        exit();
-    }
+$post = getPost($pdo);
+// Si l'id du post n'existe pas, redirection vers une page 404
+if(empty($post)) {
+    http_response_code(404);
+    header('HTTP/1.0 404 Not Found');
+    readfile('../html/404.html');
+    exit();
+}
 
 // Récupération des commentaires via l'id du post sélectionné avec la fonction getComments()
-$commentaires = getComments($pdo, $_GET['id']);
+$commentaires = getComments($pdo);
 
 
 
@@ -52,21 +52,21 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
         <?php
                 echo "<div class=\"post\">",
 
-                        "<h2>" .htmlspecialchars($post['titre']). "</h2>",
+"<h2>" . htmlspecialchars($post['titre']) . "</h2>",
 
-                        "<div class=\"corps\">",
-                            "<img src=\"../src/" .htmlspecialchars($post['fichier_image']). "\">" ,
-                            "<p>" .htmlspecialchars($post['corps']). "</p>",
-                        "</div>",
+"<div class=\"corps\">",
+"<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
+"<p>" . htmlspecialchars($post['corps']) . "</p>",
+"</div>",
 
-                        "<div class=\"categorie\">",
-                            "<h3>" .htmlspecialchars($post['categorie_nom']). " - " . "</h3>",
-                        "<span>" .htmlspecialchars($post['created_at']). "</span>",
-                    "</div>",
+"<div class=\"categorie\">",
+"<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
+"<span>" . htmlspecialchars($post['created_at']) . "</span>",
+"</div>",
 
-                    "</div>";
-            
-        ?>
+"</div>";
+
+?>
     </section>
 
     <section class="commentaires">

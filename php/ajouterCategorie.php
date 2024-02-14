@@ -1,14 +1,14 @@
-<?php 
+<?php
 
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
- $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
- $statut = 'Veuillez rentrer une catégorie';
- $statut1 = 'La catégorie à bien été ajoutée';
+$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$statut = 'Veuillez rentrer une catégorie';
+$statut1 = 'La catégorie à bien été ajoutée';
 
 // requête pour entrer une nouvelle catégorie en base de données.
 if (! empty($_POST['nom'])) {
-    addCategorie($pdo, $_POST['nom']);
+    addCategorie($pdo);
 }
 ?>
 

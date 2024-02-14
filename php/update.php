@@ -1,16 +1,16 @@
 <?php
 
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
 // Si mon formulaire a été soumis (superglobale $_POST non-vide)
- if (!empty($_POST)) {
+if (!empty($_POST)) {
     $errors = [];
 
     if (!$errors) {
         try {
-            updatePost($pdo, $_POST['titre'], $_POST['corps'], $_POST['id']);
+            updatePost($pdo);
             header('location: ../php/validation.php');
             exit();
         } catch (PDOException $e) {
