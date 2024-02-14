@@ -1,18 +1,18 @@
 <?php
- $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
- if (!empty($_POST)) {
+require_once __DIR__.'/functions.php';
+
+$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+
+if (!empty($_POST)) {
     $errors = [];
 
     if (!$errors) {
         try {
-            $query = $pdo->prepare('DELETE FROM posts WHERE id = :id');
-            $query->bindValue('id', $_POST['id'], PDO::PARAM_INT);
-            $query->execute();
-
+            deletePost($pdo, $_POST['id']);
             echo "Le post a bien été supprimé";
         } catch (PDOException $e) {
-            $errors[] = "Erreur lors de la mise à jour : " . $e->getMessage();
+            $errors[] = "Erreur lors de la suppression : " . $e->getMessage();
         }
     }
 }

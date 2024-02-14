@@ -1,14 +1,12 @@
 <?php declare(strict_types = 1);
 
+require_once __DIR__.'/functions.php';
+
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
-$query = $pdo -> query('SELECT p.id, p.titre, p.extrait, p.fichier_image, p.created_at, c.nom AS categorie_nom 
-FROM posts p
-LEFT JOIN categories c ON p.id_categorie = c.id
-ORDER BY created_at DESC');
-
-$posts = $query -> fetchAll(PDO::FETCH_ASSOC);
+// Récupération des posts en Base de données via la fonction getPosts().
+$posts = getPosts($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +33,7 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 
     <section class="grid">
         <?php
+            // Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS.
             foreach ($posts as $post) {
                 echo "<div class=\"post\">",
                         "<a href=\"post.php?id=". htmlspecialchars(strval($post['id'])) . "\"><div class=\"picture\">",

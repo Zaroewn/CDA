@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/functions.php';
+
 // Connexion à la Base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
@@ -25,22 +27,16 @@ try {
             throw new Exception("La taille du fichier dépasse la limite autorisée (3 Mo).");
         }
     }
-    // Vérifie que la superglobale $_POST est bien renseignée.
+    // Vérifie que la superglobale $_POST est bien renseignée est non-vide.
     if (!empty($_POST['titre']) && !empty($_POST['corps']) && !empty($_FILES['image']['name']) && !empty($_POST['categorie'])) {
-        // Requête préparées pour éviter les injections SQL
-        $query = $pdo->prepare('INSERT INTO posts (titre, corps, extrait, fichier_image, id_categorie) VALUES (:titre, :corps, :extrait, :fichier_image, :id_categorie)');
-        $query->bindValue('titre', $_POST['titre'], PDO::PARAM_STR);
-        $query->bindValue('corps', $_POST['corps'], PDO::PARAM_STR);
-        $query->bindValue('extrait', substr($_POST['corps'], 0, 300), PDO::PARAM_STR);
-        $query->bindValue('fichier_image', $_FILES['image']['name'], PDO::PARAM_STR);
-        $query->bindValue('id_categorie', $_POST['categorie'], PDO::PARAM_INT);
-        $query->execute();
+        // Création du post avec la fonction createPost
+        createPost($pdo, $_POST['titre'], $_POST['corps'], $_FILES['image']['name'], $_POST['categorie']);
     }
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage();
 }    
 
-// Récupération des catégories pour l'input <select>
+// Récupération des catégories pour l'input <select>, afin de pouvoir choisir une catégorie à affecter à notre nouveau post
 $query = $pdo -> query('SELECT id, nom FROM categories ORDER BY created_at ASC');
 $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
@@ -82,7 +78,7 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
             <label for="categorie">Catégorie du post :</label><br>
             <select name="categorie" id="categorie">
-                <!-- Mise en place d'une boucle foreach pour itéré toutes le entrées de mon tableau contenu dans la variable $categories -->
+                <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $categories en créant une variable $categorie -->
                 <?php foreach ($categories as $categorie) : ?>
                     <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
                     <option value="<?=htmlspecialchars($categorie['id'])?>"><?=htmlspecialchars(strval($categorie['id']))?> - <?=htmlspecialchars($categorie['nom'])?></option>
@@ -97,7 +93,7 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
             <input type="submit" value="Créer le post">
         </form>
-        <!-- Structure If/Else pour envoyer un message d'échec ou de réussite en cas de création du nouveau post -->
+        <!-- Structure If/Else pour envoyer un message d'échec ou de réussite lors de la création du nouveau post -->
         <?php if (empty($_POST['titre']) || empty($_POST['corps']) || empty($_FILES['image']['name']) || empty($_POST['categorie'])) : ?>
             <h3><?= $statut?></h3>
         <?php else : ?>
