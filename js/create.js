@@ -14,6 +14,7 @@ let glass = document.createElement("div");
         popUp.classList.add("popUp");
         document.body.appendChild(popUp);
 
+        // Création de la Pop-up top div pour aligner mes élément en haut de la div.
         let popUpTopDiv = document.createElement("div");
         popUpTopDiv.classList.add("popUpTopDiv");
         popUp.appendChild(popUpTopDiv);
@@ -31,22 +32,26 @@ let glass = document.createElement("div");
 
             })
 
+        // Création du formulaire
         let form = document.createElement("form");
         form.setAttribute("method", "post");
         form.setAttribute("action", "ajouterCategorie.php");
         form.classList.add("form");
         popUp.appendChild(form);
 
+        // Création du label
         let label = document.createElement("label")
         label.innerHTML = "Nom de la nouvelle catégorie :";
         form.appendChild(label);
 
+        // Création de l'input
         let inputCat = document.createElement("input");
         inputCat.type ="text";
         inputCat.setAttribute("name", "nom");
         inputCat.id = "nom"
         form.appendChild(inputCat);
 
+        // Création du bouton pour soumettre le formulaire
         let submit = document.createElement("input");
         submit.setAttribute("type", "submit");
         form.appendChild(submit);

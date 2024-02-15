@@ -1,0 +1,4 @@
+- CATÉGORIES (_num_category_, nom, created_at, updated_at)
+- COMMENTAIRES (_num_comment_, corps, created_at, updated_at, #num_posts, #num_utilisateur)
+- POSTS (_num_posts_, titre, corps, extrait, fichier_image, created_at, updated_at, #num_category)
+- UTILISATEURS (_num_utilisateur_, nom, image, created_at, updated_at)

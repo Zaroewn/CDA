@@ -1,0 +1,7 @@
+CATÉGORIES: num_category, nom, created_at, updated_at
+A, 11 POSTS, 0N CATÉGORIES
+POSTS: num_posts, titre, corps, extrait, fichier_image, created_at, updated_at
+PEUT AVOIR, 0N POSTS, 11 COMMENTAIRES
+COMMENTAIRES: num_comment, corps, created_at, updated_at
+ON, 11 COMMENTAIRES, 0N UTILISATEURS
+UTILISATEURS: num_utilisateur, nom, image, created_at, updated_at

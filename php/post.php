@@ -1,5 +1,7 @@
 <?php
 
+// Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
+
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
@@ -18,8 +20,15 @@ if(empty($post)) {
 // Récupération des commentaires via l'id du post sélectionné avec la fonction getComments()
 $commentaires = getComments($pdo);
 
+// Vérification avec un If, que la superglobale POST et POST['corps']n'est pas vide pour éviter d'envoyer un commentaire sans texte.
+if(! empty($_POST) && ! empty($_POST['corps'])) {
+    // Ajout du commentaire en Base de données via la fonction addComment().
+    $addComment = addComment($pdo);
+    // Redirection vers la page du post ou le commentaire à été envoyé avec la fonction native header().
+    header('Location: post.php?id='.$_GET['id']);
+}
 
-
+// Récupération des info de l'utilisateur dans le <select> , avec une requête SQL, pour choisir l'utilisateur qui laisse un commentaire.
 $query = $pdo -> query('SELECT id, nom FROM utilisateurs');
 $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -35,6 +44,7 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
+
     <header>
         <h1>BookX</h1>
     </header>
@@ -49,29 +59,28 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <section class="grid">
+        <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
         <?php
-                echo "<div class=\"post\">",
 
-"<h2>" . htmlspecialchars($post['titre']) . "</h2>",
+                echo 
+                    "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
+                    "<div class=\"corps\">",
+                        "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
+                        "<p>" . htmlspecialchars($post['corps']) . "</p>",
+                    "</div>",
+                    "<div class=\"categorie\">",
+                        "<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
+                        "<span>" . htmlspecialchars($post['created_at']) . "</span>",
+                    "</div>";
+        ?>
 
-"<div class=\"corps\">",
-"<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
-"<p>" . htmlspecialchars($post['corps']) . "</p>",
-"</div>",
-
-"<div class=\"categorie\">",
-"<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
-"<span>" . htmlspecialchars($post['created_at']) . "</span>",
-"</div>",
-
-"</div>";
-
-?>
     </section>
 
     <section class="commentaires">
         <h3>Commentaires</h3>
         <hr><br>
+            <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $commentaires en créant une variable $commentaire  -->
+            <!-- Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS. -->
         <?php foreach($commentaires as $commentaire) : ?>
                             <div class="commentaire">
                                 <div class="img">
@@ -86,6 +95,28 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
                             <br>
                     <?php endforeach ?>
     </section>
+
+    <section class="commentaires">
+        <h3>Laisser un commentaire</h3>
+        <hr><br>
+        <form action="" method="post">
+            <p>
+            <label for="user">Sélectionner un utilisateur :</label>
+            <select name="user" id="user">
+                <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $users en créant une variable $user  -->
+                <!-- Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS. -->
+                <?php foreach ($users as $user) : ?>
+                    <option value="<?=htmlspecialchars($user['id'])?>"><?=htmlspecialchars($user['id'])?> - <?=htmlspecialchars($user['nom'])?></option>
+                <?php endforeach ?>
+            </select>
+            <br><br>
+                </p>
+            <textarea name="corps" cols="30" rows="10" placeholder="Écrivez votre commentaire ici"></textarea>
+            <br><br>
+            
+            <input type="submit" value="Envoyer le commentaire">
+            </form>
+    </section>
     <footer>
         <h3>
             Made with <span>&#x2661;</span> by BookX.fr
@@ -94,3 +125,6 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
+
+
+

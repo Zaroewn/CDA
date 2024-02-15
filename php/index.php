@@ -1,5 +1,6 @@
-<?php declare(strict_types = 1);
+<?php 
 
+// Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
 require_once __DIR__.'/functions.php';
 
 // Connexion à la base de données
@@ -33,6 +34,7 @@ $posts = getPosts($pdo);
 
     <section class="grid">
         <?php
+            // Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post 
             // Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS.
             foreach ($posts as $post) {
                 echo "<div class=\"post\">",

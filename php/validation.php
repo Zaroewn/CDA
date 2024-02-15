@@ -1,9 +1,10 @@
 <?php 
+// Page de validation si la modification du post c'est bien passé.
  $statut = 'L\'article a bien été modifié.';
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
