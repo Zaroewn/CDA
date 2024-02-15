@@ -1,15 +1,18 @@
 <?php
 
+// Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
 require_once __DIR__.'/functions.php';
 
+// Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
 // Si mon formulaire a été soumis (superglobale $_POST non-vide)
  if (!empty($_POST)) {
     $errors = [];
-
+    // Vérification avec un If, que la variable $errors est vide'.
     if (!$errors) {
         try {
+            // requête pour modifier un post en base de données avec la fonction updatePost().
             updatePost($pdo, $_POST['titre'], $_POST['corps'], $_POST['id']);
             header('location: ../php/validation.php');
             exit();
@@ -20,13 +23,13 @@ $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 }
 
 // Récupération des valeurs du post choisi précédemment avec la fonction getPost()
-$post = getPost($pdo, $_GET['id']);
+$post = getPost($pdo);
 
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,6 +52,7 @@ $post = getPost($pdo, $_GET['id']);
     <section class="containeur">
         <h2>Modifier un post</h2>
 
+        <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
         <form action="update.php" method="post">
             <label for="titre">Titre actuel du post :</label><br>
             <input type="text" name="titre" value="<?=htmlspecialchars($post['titre'])?>">

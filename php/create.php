@@ -1,5 +1,6 @@
 <?php
 
+// Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
 require_once __DIR__.'/functions.php';
 
 // Connexion à la Base de données
@@ -36,14 +37,14 @@ try {
     echo "Erreur : " . $e->getMessage();
 }    
 
-// Récupération des catégories pour l'input <select>, afin de pouvoir choisir une catégorie à affecter à notre nouveau post
+// Récupération des catégories pour l'input <select>, afin de pouvoir choisir une catégorie à affecter à notre nouveau post, avec une requête SQL.
 $query = $pdo -> query('SELECT id, nom FROM categories ORDER BY created_at ASC');
 $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

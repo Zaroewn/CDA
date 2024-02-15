@@ -1,0 +1,10 @@
+%%mocodo
+:
+CATÉGORIES: num_category, nom, created_at, updated_at
+:
+POSTS: num_posts, titre, corps, extrait, fichier_image, created_at, updated_at, #num_category > CATÉGORIES > num_category
+:
+COMMENTAIRES: num_comment, corps, created_at, updated_at, #num_posts > POSTS > num_posts, #num_utilisateur > UTILISATEURS > num_utilisateur
+:
+UTILISATEURS: num_utilisateur, nom, image, created_at, updated_at
+:

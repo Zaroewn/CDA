@@ -1,15 +1,16 @@
 <?php
 
+// Connexion à la base de données
  $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
-// Récupération des posts dans le <select> pour choisir le post à modifier
+// Récupération des posts dans le <select> pour choisir le post à modifier avec une requête SQL
 $query = $pdo -> query('SELECT id, titre, corps FROM posts');
 $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -81,12 +81,6 @@ label {
     text-decoration: underline;
 }
 
-select {
-    width: 40%;
-    text-align: center;
-    margin-bottom: 5px;
-}
-
 footer { 
 	background:#1D1D1D;
 	color: white;
@@ -230,8 +224,53 @@ textarea {
     padding: 10px 20px;
     font-weight: bold;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .form input[type="submit"]:hover {
 opacity: 0.7;
+}
+
+@media only screen and (max-width: 1240px) {
+    
+    .containeur { 
+        width: 60%;
+    }
+
+    .popUp {
+        height: 21%;
+        width: 35%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    h2 {
+        font-size: 35px;
+    }
+
+    a { 
+        font-size: 11px;
+        padding: 0px;
+        border: none;
+    }
+
+    textarea {
+        width: 80%
+    }
+
+    .containeur { 
+        width: 80%;
+        padding: 15px 0;
+    }
+
+    .popUp {
+        height: 25%;
+        width: 80%;
+    }
+
+    .glass{
+        position: absolute;
+        top: 68%;
+    }
 }

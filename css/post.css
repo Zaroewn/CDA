@@ -75,6 +75,51 @@ img {
     margin: 15px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+form input[type="submit"] {
+    cursor: pointer;
+    background: #1D1D1D;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+form input[type="submit"]:hover {
+opacity: 0.7;
+}
+
+textarea {
+    font-weight: bold;
+    font-size: 16px;
+    width: 90%;
+    padding: 15px;
+    overflow: hidden;
+    background: rgb(240, 240, 240);
+    border: 0px inset black;
+    border-radius: 10px;
+    box-shadow: inset 0 0 10px rgb(172, 172, 172);
+}
+
+select {
+    cursor: pointer;
+    padding: 10px;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+  }
+
 footer { 
 	background:#1D1D1D;
 	color: white;
@@ -89,20 +134,12 @@ footer {
     width: 60%;
     margin: auto;
     text-align: center;
-}
-
-.post {
-    padding-top: 15px;
-    overflow: hidden;
-    background: white;
     border: 0px solid black;
     border-radius: 10px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     margin-bottom: 50px;
-}
-
-.post a {
-    padding: 0px;
+    padding-top: 15px;
+    background: white;
 }
 
 .corps {
@@ -172,3 +209,127 @@ text-align: left;
     justify-content: center;
 }
 
+
+@media only screen and (max-width: 1669px) {
+    p {
+        font-size: 14px;
+     }
+
+     /* CLASS */
+    
+    .grid {
+        width: 80%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+}
+       
+@media only screen and (max-width: 1300px) {
+    nav {
+        font-size: 15px;
+        padding: 15px;
+    }
+    
+    h1 {
+        margin-bottom: 10px;
+    }
+    
+    textarea {
+        font-weight: bold;
+        font-size: 13px;
+        text-align: center;
+        padding-bottom: 0;
+    }
+    
+    a { 
+        display: inline-block;
+        margin-bottom: 5px;
+        border: none;
+    }
+    
+    span {
+        font-size: 13px;
+    }
+    
+    p {
+        font-size: 14px;
+     }
+    
+     img {
+        height: auto;
+        width: 100%;
+     }
+    
+     form p {
+        text-align: center;
+        padding: 0;
+     }
+    
+    
+    /* CLASS */
+    
+    .grid {
+        width: 80%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .corps {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    
+    .corps p {
+        text-align: center;
+    }
+    
+    .categorie {
+        justify-content: center;
+    }
+    
+    .categorie h3 {
+        font-size: 14px;
+    }
+    
+    .commentaires {
+        width: 80%;
+        margin: 25px auto;
+    }
+    
+    .commentaires h3 {
+        margin: 10px;
+        text-align: center;
+    }
+    
+    .commentaire {
+        width: 85%;
+    }
+    
+    .img img {
+        width: 10%;
+        height: auto;
+    }
+    .img p{
+    padding: 0;
+    text-align: left;
+    }
+    
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .img img {
+        width: 25%;
+        height: auto;
+    }
+}

@@ -60,6 +60,11 @@ p {
     padding: 20px;
  }
 
+ img {
+    height: auto;
+    width: 100%;
+ }
+
 footer { 
 	background:#1D1D1D;
 	color: white;
@@ -139,4 +144,64 @@ footer {
 .categorie h3 {
     font-size: 18px;
     font-weight: 500;
+}
+
+@media only screen and (max-width: 1240px) {
+    
+    span {
+        font-size: 14px;
+    }
+    
+    .categorie h3 {
+        font-size: 14px;
+    }
+    .grid {
+        width: 60%;
+        margin: auto;
+        text-align: center;
+        display: grid;
+        gap: 30px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+a { 
+    font-size: 11px;
+    padding: 0px;
+    border: none;
+}
+
+span {
+    font-size: 13px;
+}
+
+p {
+    font-size: 14px;
+ }
+
+ img {
+    margin-top: 25px;
+    height: auto;
+    width: 100%;
+ }
+/* CLASS */
+
+.grid {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.picture{
+    width: 80%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.categorie h3 {
+    font-size: 13px;
+    font-weight: 500;
+}
 }
