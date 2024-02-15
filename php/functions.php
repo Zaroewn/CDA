@@ -4,7 +4,7 @@
 // Fonction implémentant une requête SQL pour récupérer un post, avec une requête préparé pour éviter une injection SQL.
 function getPost($pdo)
 {
-    $query = $pdo -> prepare('SELECT p.id, p.titre, p.corps, p.fichier_image, p.created_at, c.nom AS categorie_nom
+    $query = $pdo -> prepare('SELECT p.id, p.titre, p.corps, p.fichier_image, p.created_at, c.nom AS categorie_nom 
     FROM posts p
     LEFT JOIN categories c ON p.id_categorie = c.id
     WHERE p.id = :id');
@@ -24,17 +24,17 @@ function getPosts($pdo)
     LEFT JOIN categories c ON p.id_categorie = c.id
     ORDER BY created_at DESC');
 
-
     return $query -> fetchAll(PDO::FETCH_ASSOC);
 
 
 }
 
 
+
 // Fonction implémentant une requête SQL pour récupérer les commentaires liés à un post, avec une requête préparé pour éviter une injection SQL.
 function getComments($pdo)
 {
-    $query = $pdo -> prepare('SELECT commentaires.corps, commentaires.created_at, utilisateurs.nom, utilisateurs.photo
+    $query = $pdo -> prepare('SELECT commentaires.corps, commentaires.created_at, utilisateurs.nom, utilisateurs.photo 
     FROM commentaires
     LEFT JOIN utilisateurs
     ON commentaires.id_utilisateur = utilisateurs.id
@@ -48,6 +48,7 @@ function getComments($pdo)
 
 
 //Fonction implémentant une requête SQL pour créer un post, avec une requête préparé pour éviter une injection SQL.
+
 function createPost($pdo)
 {
     $query = $pdo->prepare('INSERT INTO posts (titre, corps, extrait, fichier_image, id_categorie) VALUES (:titre, :corps, :extrait, :fichier_image, :id_categorie)');
@@ -59,17 +60,14 @@ function createPost($pdo)
     return $query->execute();
 }
 
-
 // Fonction implémentant une requête SQL pour supprimer un post, avec une requête préparé pour éviter une injection SQL.
 function deletePost($pdo)
 {
     $query = $pdo->prepare('DELETE FROM posts WHERE id = :id');
     $query->bindValue('id', $_POST['id'], PDO::PARAM_INT);
 
-
     return $query->execute();
 }
-
 
 // Fonction implémentant une requête SQL pour modifier un post, avec une requête préparé pour éviter une injection SQL.
 function updatePost($pdo)
@@ -80,7 +78,6 @@ function updatePost($pdo)
     $query->bindValue('extrait', substr($_POST['corps'], 0, 300), PDO::PARAM_STR);
     $query->bindValue('id', $_POST['id'], PDO::PARAM_INT);
 
-
     return $query->execute();
 }
 
@@ -90,6 +87,7 @@ function addCategorie($pdo)
 {
     $query = $pdo->prepare('INSERT INTO categories (nom) VALUES (:nom)');
     $query->bindValue('nom', $_POST['nom'], PDO::PARAM_STR);
+
     return $query->execute();
 }
 
@@ -100,8 +98,7 @@ function addComment($pdo)
     $query->bindValue('corps', $_POST['corps'], PDO::PARAM_STR);
     $query->bindValue('id_post', $_GET['id'], PDO::PARAM_STR);
     $query->bindValue('id_utilisateur', $_POST['user'], PDO::PARAM_STR);
+  
     return $query->execute();
 }
-
-
 

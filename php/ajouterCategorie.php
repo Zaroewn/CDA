@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
 require_once __DIR__.'/functions.php';
@@ -12,7 +12,8 @@ require_once __DIR__.'/functions.php';
 // Vérification avec un If, que la superglobale POST['nom'] n'est pas vide
 if (! empty($_POST['nom'])) {
     // requête pour entrer une nouvelle catégorie en base de données avec la fonction addCategorie.
-    addCategorie($pdo, $_POST['nom']);
+    addCategorie($pdo);
+
 }
 ?>
 

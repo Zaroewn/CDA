@@ -1,6 +1,7 @@
 <?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
+
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
@@ -32,7 +33,6 @@ $query = $pdo -> query('SELECT id, nom FROM utilisateurs');
 $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -49,7 +49,6 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
         <h1>BookX</h1>
     </header>
 
-
     <nav>
         <ul>
             <li><a href="index.php">Accueil</a></li>
@@ -59,10 +58,10 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
         </ul>
     </nav>
 
-
     <section class="grid">
         <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
         <?php
+
                 echo 
                     "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
                     "<div class=\"corps\">",
@@ -74,6 +73,7 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
                         "<span>" . htmlspecialchars($post['created_at']) . "</span>",
                     "</div>";
         ?>
+
     </section>
 
     <section class="commentaires">

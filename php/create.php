@@ -31,11 +31,11 @@ try {
     // Vérifie que la superglobale $_POST est bien renseignée est non-vide.
     if (!empty($_POST['titre']) && !empty($_POST['corps']) && !empty($_FILES['image']['name']) && !empty($_POST['categorie'])) {
         // Création du post avec la fonction createPost
-        createPost($pdo, $_POST['titre'], $_POST['corps'], $_FILES['image']['name'], $_POST['categorie']);
+        createPost($pdo);
     }
 } catch (Exception $e) {
     echo "Erreur : " . $e->getMessage();
-}    
+}
 
 // Récupération des catégories pour l'input <select>, afin de pouvoir choisir une catégorie à affecter à notre nouveau post, avec une requête SQL.
 $query = $pdo -> query('SELECT id, nom FROM categories ORDER BY created_at ASC');

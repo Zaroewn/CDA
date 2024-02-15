@@ -3,17 +3,20 @@
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
 require_once __DIR__.'/functions.php';
 
+
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
 // Si mon formulaire a été soumis (superglobale $_POST non-vide)
- if (!empty($_POST)) {
+if (!empty($_POST)) {
     $errors = [];
     // Vérification avec un If, que la variable $errors est vide'.
     if (!$errors) {
         try {
+
             // requête pour modifier un post en base de données avec la fonction updatePost().
-            updatePost($pdo, $_POST['titre'], $_POST['corps'], $_POST['id']);
+            updatePost($pdo);
+
             header('location: ../php/validation.php');
             exit();
         } catch (PDOException $e) {
