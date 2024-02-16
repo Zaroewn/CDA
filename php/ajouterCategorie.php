@@ -4,7 +4,7 @@
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 $statut = 'Veuillez rentrer une catégorie';
 $statut1 = 'La catégorie à bien été ajoutée';
@@ -23,7 +23,7 @@ if (! empty($_POST['nom'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/ajouterCategorie.css">
+    <link rel="stylesheet" type="text/css" href="/css/ajouterCategorie.css">
     <title>Création d'une nouvelle catégorie</title>
 </head>
 <body>

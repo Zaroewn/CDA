@@ -4,7 +4,7 @@
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la Base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 $statut = '*Veuillez renseigner tout les champs';
 $statut1 = 'Nouvelle article crée :)';
@@ -49,8 +49,8 @@ $categories = $query -> fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/cud.css">
-    <script type="module" src="../js/create.js"> defer</script>
+    <link rel="stylesheet" type="text/css" href="/css/cud.css">
+    <script type="module" src="/js/create.js"> defer</script>
     <title>Création d'un nouveau post</title>
 </head>
 <body>

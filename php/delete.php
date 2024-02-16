@@ -6,7 +6,7 @@ require_once __DIR__ . '/functions.php';
 
 
 // Connexion à la Base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 // Vérification avec un If, que la superglobale POST n'est pas vide.
 if (!empty($_POST)) {
@@ -37,7 +37,7 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/cud.css">
+    <link rel="stylesheet" type="text/css" href="/css/cud.css">
     <title>Suppression d'un post</title>
 </head>
 <body>
