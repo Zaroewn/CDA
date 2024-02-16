@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
 $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
@@ -15,6 +15,7 @@ $posts = getPosts($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/index.css">
     <title>BookX | Le meilleur de la lecture</title>
 </head>
@@ -34,23 +35,23 @@ $posts = getPosts($pdo);
 
     <section class="grid">
         <?php
-            // Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post 
+            // Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post
             // Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS.
             foreach ($posts as $post) {
                 echo "<div class=\"post\">",
-                        "<a href=\"post.php?id=". htmlspecialchars(strval($post['id'])) . "\"><div class=\"picture\">",
-                            "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
-                        "</div></a>",
-                        "<h2>" .htmlspecialchars($post['titre']). "</h2>",
-                        "<div class=\"categorie\">",
-                            "<h3>" .htmlspecialchars($post['categorie_nom']). " - " . "</h3>",
-                            "<span>" .htmlspecialchars($post['created_at']). "</span>",
-                        "</div>",
-                        "<p>" .htmlspecialchars($post['extrait']). "</p>",
-                        "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=" .htmlspecialchars(strval($post['id'])). "'\">Lire la suite</button>",
-                    "</div>";
+                "<a href=\"post.php?id=" . htmlspecialchars(strval($post['id'])) . "\"><div class=\"picture\">",
+                "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
+                "</div></a>",
+                "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
+                "<div class=\"categorie\">",
+                "<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
+                "<span>" . htmlspecialchars($post['created_at']) . "</span>",
+                "</div>",
+                "<p>" . htmlspecialchars($post['extrait']) . "</p>",
+                "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=" . htmlspecialchars(strval($post['id'])) . "'\">Lire la suite</button>",
+                "</div>";
             }
-        ?>
+?>
     </section>
 
     <footer>

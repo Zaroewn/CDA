@@ -25,7 +25,7 @@ if(! empty($_POST) && ! empty($_POST['corps'])) {
     // Ajout du commentaire en Base de données via la fonction addComment().
     $addComment = addComment($pdo);
     // Redirection vers la page du post ou le commentaire à été envoyé avec la fonction native header().
-    header('Location: post.php?id='.$_GET['id']);
+    header('Location: post.php?id=' . $_GET['id']);
 }
 
 // Récupération des info de l'utilisateur dans le <select> , avec une requête SQL, pour choisir l'utilisateur qui laisse un commentaire.
@@ -38,6 +38,7 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/post.css">
     <script type="module" src="../js/createUser.js"> defer</script>
     <title>BookX | Le meilleur de la lecture</title>
@@ -62,17 +63,17 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
         <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
         <?php
 
-                echo 
+                echo
                     "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
-                    "<div class=\"corps\">",
-                        "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
-                        "<p>" . htmlspecialchars($post['corps']) . "</p>",
-                    "</div>",
-                    "<div class=\"categorie\">",
-                        "<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
-                        "<span>" . htmlspecialchars($post['created_at']) . "</span>",
-                    "</div>";
-        ?>
+"<div class=\"corps\">",
+"<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
+"<p>" . htmlspecialchars($post['corps']) . "</p>",
+"</div>",
+"<div class=\"categorie\">",
+"<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
+"<span>" . htmlspecialchars($post['created_at']) . "</span>",
+"</div>";
+?>
 
     </section>
 
