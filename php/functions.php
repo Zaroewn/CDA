@@ -1,6 +1,5 @@
 <?php
 
-
 // Fonction implémentant une requête SQL pour récupérer un post, avec une requête préparé pour éviter une injection SQL.
 function getPost($pdo)
 {
@@ -15,7 +14,6 @@ function getPost($pdo)
     return $query -> fetch(PDO::FETCH_ASSOC);
 }
 
-
 // Fonction implémentant une requête SQL pour récupérer tout les posts
 function getPosts($pdo)
 {
@@ -25,11 +23,7 @@ function getPosts($pdo)
     ORDER BY created_at DESC');
 
     return $query -> fetchAll(PDO::FETCH_ASSOC);
-
-
 }
-
-
 
 // Fonction implémentant une requête SQL pour récupérer les commentaires liés à un post, avec une requête préparé pour éviter une injection SQL.
 function getComments($pdo)
@@ -38,14 +32,14 @@ function getComments($pdo)
     FROM commentaires
     LEFT JOIN utilisateurs
     ON commentaires.id_utilisateur = utilisateurs.id
-    WHERE id_post = :id');
+    WHERE id_post = :id
+    ORDER BY created_at DESC');
 
     $query -> bindValue('id', $_GET['id'], PDO::PARAM_INT);
     $query -> execute();
 
     return $query -> fetchAll(PDO::FETCH_ASSOC);
 }
-
 
 //Fonction implémentant une requête SQL pour créer un post, avec une requête préparé pour éviter une injection SQL.
 
@@ -81,7 +75,6 @@ function updatePost($pdo)
     return $query->execute();
 }
 
-
 // Fonction implémentant une requête SQL pour ajouter une catégorie, avec une requête préparé pour éviter une injection SQL.
 function addCategorie($pdo)
 {
@@ -98,7 +91,6 @@ function addComment($pdo)
     $query->bindValue('corps', $_POST['corps'], PDO::PARAM_STR);
     $query->bindValue('id_post', $_GET['id'], PDO::PARAM_STR);
     $query->bindValue('id_utilisateur', $_POST['user'], PDO::PARAM_STR);
-  
+
     return $query->execute();
 }
-
