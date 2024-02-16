@@ -2,7 +2,7 @@
 
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 
 // Connexion à la Base de données
@@ -48,7 +48,7 @@ $posts = $query -> fetchAll(PDO::FETCH_ASSOC);
         <ul>
             <li><a href="index.php">Accueil</a></li>
             <li><a href="create.php">Créer un post</a></li>
-            <li><a href="update.php">Modifier un post</a></li>
+            <li><a href="choixModif.php">Modifier un post</a></li>
         </ul>
     </nav>
 
