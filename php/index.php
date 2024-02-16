@@ -15,7 +15,7 @@ $posts = getPosts($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="../src/livre.png" type="image/x-icon">
+    <link rel="icon" href="/src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="/css/index.css">
     <title>BookX | Le meilleur de la lecture</title>
 </head>
