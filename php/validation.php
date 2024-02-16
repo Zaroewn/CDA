@@ -1,6 +1,6 @@
-<?php 
+<?php
 // Page de validation si la modification du post c'est bien passé.
- $statut = 'L\'article a bien été modifié.';
+$statut = 'L\'article a bien été modifié.';
 ?>
 
 <!DOCTYPE html>
@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/ajouterCategorie.css">
     <title>Création d'une nouvelle catégorie</title>
 </head>

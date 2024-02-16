@@ -1,7 +1,7 @@
 <?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 
 // Connexion à la base de données
@@ -36,6 +36,7 @@ $post = getPost($pdo);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/cud.css">
     <title>Modification d'un post</title>
 </head>

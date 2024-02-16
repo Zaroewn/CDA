@@ -1,13 +1,13 @@
 <?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
-require_once __DIR__.'/functions.php';
+require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
- $pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
 
- $statut = 'Veuillez rentrer une catégorie';
- $statut1 = 'La catégorie à bien été ajoutée';
+$statut = 'Veuillez rentrer une catégorie';
+$statut1 = 'La catégorie à bien été ajoutée';
 
 // Vérification avec un If, que la superglobale POST['nom'] n'est pas vide
 if (! empty($_POST['nom'])) {
@@ -22,6 +22,7 @@ if (! empty($_POST['nom'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../src/livre.png" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="../css/ajouterCategorie.css">
     <title>Création d'une nouvelle catégorie</title>
 </head>
