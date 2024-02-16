@@ -4,7 +4,7 @@
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 // Récupération des posts en Base de données via la fonction getPosts().
 $posts = getPosts($pdo);
@@ -16,7 +16,7 @@ $posts = getPosts($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
     <title>BookX | Le meilleur de la lecture</title>
 </head>
 <body>

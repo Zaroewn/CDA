@@ -5,7 +5,7 @@ require_once __DIR__ . '/functions.php';
 
 
 // Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 // Si mon formulaire a été soumis (superglobale $_POST non-vide)
 if (!empty($_POST)) {
@@ -37,7 +37,7 @@ $post = getPost($pdo);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/cud.css">
+    <link rel="stylesheet" type="text/css" href="/css/cud.css">
     <title>Modification d'un post</title>
 </head>
 <body>

@@ -5,15 +5,14 @@
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
-$pdo = new PDO('mysql:host=localhost;dbname=cda', 'root', '');
+$pdo = new PDO('mysql:host=db;dbname=cda', 'root', '');
 
 // Récupération du post sélectionné via son id avec la fonction getPost()
 $post = getPost($pdo);
 // Si l'id du post n'existe pas, redirection vers une page 404
 if(empty($post)) {
     http_response_code(404);
-    header('HTTP/1.0 404 Not Found');
-    readfile('../html/404.html');
+    header('Location: /html/404.html');
     exit();
 }
 
@@ -39,7 +38,7 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../src/livre.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="../css/post.css">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
     <script type="module" src="../js/createUser.js"> defer</script>
     <title>BookX | Le meilleur de la lecture</title>
 </head>

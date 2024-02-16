@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8084:80"
+    volumes:
+      - .:/var/www
+
+  db:
+    
+    image: mysql:8.3
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - "33062:3306" 
+    environment:
+      - MYSQL_DATABASE=cda
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin:5.2
+    restart: always
+    ports:
+      - 8082:80
+    environment:
+     PMA_HOST: db
+
