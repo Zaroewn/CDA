@@ -18,7 +18,8 @@ Nous éxécuturons le projet localement grâce à Docker.
 
   1. Télécharger Docker-> https://www.docker.com/get-started/
   2. Télécharger le dossier du projet CDA depuis GitHub -> https://github.com/Zaroewn/CDA.git
-  3. Lancer Docker, aller dans les paramètre et cocher la ligne comme dans l'image -> 
+  3. Lancer Docker, aller dans les paramètre (petite roue crantée en haut à droite) et cocher la ligne ![image](https://github.com/Zaroewn/CDA/assets/147649399/42f77a21-2f4c-43d5-93e7-480b03ec1b70)
+
   4. Changer le chemin par défault de l'invit par celui ou vous avez mis le projet CDA télécharger depuis GitHub. Par exemple si vous avez mis le projet dans le dossier documents faites un `cd Documents\CDA` dans l'invit de commande.
   5. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande.
   6. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, et laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
