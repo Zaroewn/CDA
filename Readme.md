@@ -16,7 +16,7 @@ Nous éxécuturons le projet localement grâce à Docker.
 
 ## Comment éxécuter le projet localement
 
-  1. Télécharger Docker via [ce lien](https://www.docker.com/get-started/)
+  1. Télécharger Docker https://www.docker.com/get-started/
   2. Télécharger le dossier du projet CDA depuis GitHub via [ce lien](https://github.com/Zaroewn/CDA.git)
   3. Lancer Docker, une fois lancer, ouvrer l'invit de commande windows
   4. Changer le chemin par défault de l'invit par celui ou vous avez mis le projet CDA télécharger depuis GitHub. Par exemple si vous avez mis le projet dans le dossier documents faites un `cd Documents\CDA` dans l'invit de commande.
