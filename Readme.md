@@ -20,10 +20,12 @@ Nous éxécuturons le projet localement grâce à Docker.
   2. Télécharger le dossier du projet CDA depuis GitHub -> https://github.com/Zaroewn/CDA.git
   3. Lancer Docker, aller dans les paramètre (petite roue crantée en haut à droite) et cocher la ligne ![image](https://github.com/Zaroewn/CDA/assets/147649399/42f77a21-2f4c-43d5-93e7-480b03ec1b70)
 
-  4. Changer le chemin par défault de l'invit par celui ou vous avez mis le projet CDA télécharger depuis GitHub. Par exemple si vous avez mis le projet dans le dossier documents faites un `cd Documents\CDA` dans l'invit de commande.
+  4. Lancer l'invit de commande windows et changer le chemin par défault de l'invit par celui ou vous avez mis le projet CDA télécharger depuis GitHub. Par exemple si vous avez mis le projet dans le dossier documents faites un `cd Documents\CDA` dans l'invit de commande vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a)
+
   5. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande.
   6. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, et laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
-  7. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin.
+  7. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin puis appuyer sur go ou éxécuter. ![image](https://github.com/Zaroewn/CDA/assets/147649399/e7f098ff-8c8a-4f71-82a4-4264a7e7212e)
+
   ```
 -- Utilisation de la base de données
 USE cda;
