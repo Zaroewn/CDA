@@ -14,7 +14,7 @@ Vous trouverez des fonctions supplémentaires comme getComments, ou addComment q
 
 Nous éxécuturons le projet localement grâce à Docker.
 
-Comment éxécuter le projet localement :
+## Comment éxécuter le projet localement
 
   1. Télécharger Docker via [ce lien](https://www.docker.com/get-started/)
   2. Télécharger le dossier du projet CDA depuis GitHub via [ce lien](https://github.com/Zaroewn/CDA.git)
