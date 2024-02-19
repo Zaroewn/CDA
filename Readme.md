@@ -23,5 +23,10 @@ Nous éxécuturons le projet localement grâce à Docker.
   5. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande.
   6. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, et laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
   7. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin.
- 8. Une fois toute ces étapes passer, vous devriez avoir accès au projet via l'adresse -> http://localhost:8084/
+  8. ```
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+ 9. Une fois toute ces étapes passer, vous devriez avoir accès au projet via l'adresse -> http://localhost:8084/
 
