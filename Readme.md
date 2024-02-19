@@ -22,7 +22,7 @@ Nous éxécuturons le projet localement grâce à Docker.
   3. Lancer Docker, aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
 
 
-  4. Lancer l'invit de commande windows, changer le chemin par défault, par celui ou vous avez mis le projet CDA (normalement dans le dossier Documents). Par exemple si vous avez mis le projet dans le dossier documents faites un `cd Documents\CDA` dans l'invit de commande vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` et changer le chemin Documents\CDA par le bon.
+  4. Lancer l'invit de commande windows, changer le chemin par défault, par celui ou vous avez mis le projet CDA (normalement dans le dossier Documents). Par exemple si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invit de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
 
   5. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande.
   6. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
@@ -60,9 +60,9 @@ INSERT INTO `utilisateurs` (`id`, `nom`, `photo`, `created_at`, `updated_at`) VA
 (1, 'Maxime', 'profil.jpg', '2024-02-08 15:51:57', '2024-02-11 16:48:59'),
 (2, 'Georges', 'profil.jpg', '2024-02-08 15:51:57', '2024-02-11 17:15:31'),
 (3, 'Julie', 'profil.jpg', '2024-02-08 15:52:26', '2024-02-11 17:15:31'),
-(4, 'April', 'profil.jpg', '2024-02-08 15:52:26', '2024-02-11 17:15:31');
-(5, 'John', 'profil.jpg', '2024-02-13 21:07:52', '2024-02-14 20:52:47');
-(6, 'Matthew', 'profil.jpg', '2024-02-13 21:08:38', '2024-02-14 20:52:47');
+(4, 'April', 'profil.jpg', '2024-02-08 15:52:26', '2024-02-11 17:15:31'),
+(5, 'John', 'profil.jpg', '2024-02-13 21:07:52', '2024-02-14 20:52:47'),
+(6, 'Matthew', 'profil.jpg', '2024-02-13 21:08:38', '2024-02-14 20:52:47'),
 (7, 'Iris', 'profil.jpg', '2024-02-13 21:15:01', '2024-02-14 20:52:47');
 
 -- Création de la table "Podcasts"
