@@ -34,24 +34,23 @@ $posts = getPosts($pdo);
     </nav>
 
     <section class="grid">
-        <?php
-            // Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post
-            // Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS.
-            foreach ($posts as $post) {
-                echo "<div class=\"post\">",
-                "<a href=\"post.php?id=" . htmlspecialchars(strval($post['id'])) . "\"><div class=\"picture\">",
-                "<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
-                "</div></a>",
-                "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
-                "<div class=\"categorie\">",
-                "<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
-                "<span>" . htmlspecialchars($post['created_at']) . "</span>",
-                "</div>",
-                "<p>" . htmlspecialchars($post['extrait']) . "</p>",
-                "<button class=\"glow-on-hover\" onclick=\"location.href='post.php?id=" . htmlspecialchars(strval($post['id'])) . "'\">Lire la suite</button>",
-                "</div>";
-            }
-?>
+            <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $posts en créant une variable $post -->
+            <!-- Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS. -->
+            <?php foreach ($posts as $post) : ?>
+                <div class="post">
+                    <a href="post.php?id=<?=htmlspecialchars(strval($post['id']))?>">
+                    <div class="picture">
+                        <img src="../src/<?=htmlspecialchars($post['fichier_image'])?>" alt="">
+                    </div></a>
+                    <h2><?=htmlspecialchars($post['titre'])?></h2>
+                    <div class="categorie">
+                        <h3><?=htmlspecialchars($post['categorie_nom'])?>&nbsp;-&nbsp;</h3>
+                        <span><?=htmlspecialchars($post['created_at'])?></span>
+                    </div>
+                    <p><?=htmlspecialchars($post['extrait'])?></p>
+                    <button onclick="location.href='post.php?id=<?=htmlspecialchars(strval($post['id']))?>'">Lire la suite</button>
+                </div>
+            <?php endforeach ?>
     </section>
 
     <footer>

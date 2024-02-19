@@ -1,7 +1,6 @@
 <?php
 
 // Utilisation de la fonction Require de la page function.php, pour pouvoir utiliser les fonctions.
-
 require_once __DIR__ . '/functions.php';
 
 // Connexion à la base de données
@@ -43,7 +42,6 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 </head>
 <body>
 
-
     <header>
         <h1>BookX</h1>
     </header>
@@ -59,20 +57,15 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
 
     <section class="grid">
         <!-- Utilisation de la fonction htmlspecialchars(), toujours dans un but sécuritaire pour éviter les failles XXS -->
-        <?php
-
-                echo
-                    "<h2>" . htmlspecialchars($post['titre']) . "</h2>",
-"<div class=\"corps\">",
-"<img src=\"../src/" . htmlspecialchars($post['fichier_image']) . "\">" ,
-"<p>" . htmlspecialchars($post['corps']) . "</p>",
-"</div>",
-"<div class=\"categorie\">",
-"<h3>" . htmlspecialchars($post['categorie_nom']) . " - " . "</h3>",
-"<span>" . htmlspecialchars($post['created_at']) . "</span>",
-"</div>";
-?>
-
+        <h2><?=htmlspecialchars($post['titre'])?></h2>
+        <div class="corps">
+            <img src="../src/<?=htmlspecialchars($post['fichier_image'])?>" alt="image-du-post">
+            <p><?=htmlspecialchars($post['corps'])?></p>
+        </div>
+        <div class="categorie">
+            <h3><?=htmlspecialchars($post['categorie_nom'])?>&nbsp;-&nbsp;</h3>
+            <span><?=htmlspecialchars($post['created_at'])?></span>
+        </div>
     </section>
 
     <section class="commentaires">
@@ -81,18 +74,18 @@ $users = $query -> fetchAll(PDO::FETCH_ASSOC);
             <!-- Mise en place d'une boucle foreach pour itéré toutes les entrées de mon tableau contenu dans la variable $commentaires en créant une variable $commentaire  -->
             <!-- Utilisation de la fonction native htmlspecialchars() pour éviter toute faille XSS. -->
         <?php foreach($commentaires as $commentaire) : ?>
-                            <div class="commentaire">
-                                <div class="img">
-                                    <img src="../src/<?=htmlspecialchars($commentaire['photo'])?>">
-                                    <div class="info">
-                                        <h5><?=htmlspecialchars($commentaire['nom'])?></h5>
-                                        <span><?=htmlspecialchars($commentaire['created_at'])?></span>
-                                    </div>
-                                </div>
-                                <p><?=htmlspecialchars($commentaire['corps'])?></p>
-                            </div>
-                            <br>
-                    <?php endforeach ?>
+            <div class="commentaire">
+                <div class="img">
+                    <img src="../src/<?=htmlspecialchars($commentaire['photo'])?>" alt="photo-de-profil">
+                    <div class="info">
+                        <h5><?=htmlspecialchars($commentaire['nom'])?></h5>
+                        <span><?=htmlspecialchars($commentaire['created_at'])?></span>
+                    </div>
+                </div>
+                <p><?=htmlspecialchars($commentaire['corps'])?></p>
+            </div>
+            <br>
+        <?php endforeach ?>
     </section>
 
     <section class="commentaires">
