@@ -19,15 +19,18 @@ Nous éxécuturons le projet localement grâce à Docker.
   1. Télécharger Docker-> https://www.docker.com/get-started/.
   2. Télécharger le dossier CDA depuis GitHub https://github.com/Zaroewn/CDA.git, dezipper-le et copier-le dans le dossier Documents. ![image](https://github.com/Zaroewn/CDA/assets/147649399/bced325b-12d0-4528-b04a-05e52ac31e5a)
 
-  3. Lancer Docker, aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
+  3. Lancer Docker, au moment du choix de la connection, choissisez continuer sans être identifier. Ensuite aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
 
 
-  4. Lancer l'invit de commande windows, changer le chemin par défault, par celui ou vous avez mis le projet CDA (normalement dans le dossier Documents). Par exemple si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invit de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
+  4. Lancer l'invit de commande windows ![image](https://github.com/Zaroewn/CDA/assets/147649399/1dd67e31-5948-4879-9192-b26b342776e9)
 
-  5. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande. Attendez que tout soit fini dans l'invit de commande, et vérifier que vous avez la même chose que sur l'image en cliquant sur `containers`, si une des icônes est orange, cliquer sur le petit signe play à côté de celui-ci pour le lancer : ![image](https://github.com/Zaroewn/CDA/assets/147649399/a1ffc0e7-a35a-416e-a42e-ebdc5f4023e2)
 
-  6. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
-  7. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin puis appuyer sur go ou éxécuter. ![image](https://github.com/Zaroewn/CDA/assets/147649399/e7f098ff-8c8a-4f71-82a4-4264a7e7212e)
+  5. Changer le chemin par défault, par celui ou vous avez mis le projet CDA (normalement dans le dossier Documents). Par exemple si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invit de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
+
+  6. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande. Attendez que tout soit fini dans l'invit de commande, et vérifier que vous avez la même chose que sur l'image en cliquant sur `containers`, si une des icônes est orange, cliquer sur le petit signe play à côté de celui-ci pour le lancer : ![image](https://github.com/Zaroewn/CDA/assets/147649399/a1ffc0e7-a35a-416e-a42e-ebdc5f4023e2)
+
+  7. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
+  8. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin puis appuyer sur go ou éxécuter. ![image](https://github.com/Zaroewn/CDA/assets/147649399/e7f098ff-8c8a-4f71-82a4-4264a7e7212e)
 
   ```
 -- Utilisation de la base de données
