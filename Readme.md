@@ -1,36 +1,38 @@
 # Projet CDA
 
 J'ai choisi de créer un projet de type blog, axé sur les livres. Vous aller voir le site comme si vous étiez l'administrateur de celui-ci. Vous pourrez donc, ajouter, modifier et supprimer des articles.
-Le code implémente donc toutes les fonctionnalités CRUD, j'ai choisi la plupart du temps de faire ces fonctionnalités sous type de fonctions pour factoriser au maximum le code, et évité les répétitions.
+Le code implémente donc toutes les fonctionnalités CRUD, j'ai choisi la plupart du temps de faire ces fonctionnalités sous type de fonctions pour factoriser au maximum le code et évité les répétitions.
 
 Toutes les fonctions se trouvent dans le fichier functions.php :
 
-- Create : Ce fait grâce à la fonction createPost(), qui implémente un code de type requête préparé SQL.
-- Read: Ce fait grâce à la fonction getPosts(), et getPost(), elles implémentent code de type requête préparé SQL.
-- Update: Ce fait grâce à la fonction updatePost(), qui implémente un code de type requête préparé SQL.
-- Delete: Ce fait grâce à la fonction deletePost(), qui implémente un code de type requête préparé SQL.
+- Create : ce fait grâce à la fonction createPost(), qui implémente un code de type requête préparé SQL.
+- Read: ce fait grâce à la fonction getPosts(), et getPost(), elles implémentent code de type requête préparé SQL.
+- Update: ce fait grâce à la fonction updatePost(), qui implémente un code de type requête préparé SQL.
+- Delete: ce fait grâce à la fonction deletePost(), qui implémente un code de type requête préparé SQL.
 
-Vous trouverez des fonctions supplémentaires comme getComments, ou addComment qui permettent de récupérer des commentaires liés au post choisit pour la première, et d'ajouter un commentaire pour la seconde.
+Vous trouverez des fonctions supplémentaires comme getComments, ou addComment qui permettent de récupérer des commentaires liés au post choisit pour la première et d'ajouter un commentaire pour la seconde.
 
 Nous éxécuturons le projet localement grâce à Docker.
 
 ## Comment éxécuter le projet localement
 
   1. Télécharger Docker-> https://www.docker.com/get-started/.
-  2. Télécharger le dossier CDA depuis GitHub https://github.com/Zaroewn/CDA.git, dezipper-le et copier-le dans le dossier Documents. ![image](https://github.com/Zaroewn/CDA/assets/147649399/bced325b-12d0-4528-b04a-05e52ac31e5a)
+  2. Télécharger le dossier CDA depuis GitHub https://github.com/Zaroewn/CDA.git, dezippez-le et copiez-le dans le dossier Documents. ![image](https://github.com/Zaroewn/CDA/assets/147649399/bced325b-12d0-4528-b04a-05e52ac31e5a)
 
-  3. Lancer Docker, au moment du choix de la connection, choissisez continuer sans être identifier. Ensuite aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
-
-
-  4. Lancer l'invit de commande windows ![image](https://github.com/Zaroewn/CDA/assets/147649399/1dd67e31-5948-4879-9192-b26b342776e9)
+  3. Lancer Docker, au moment du choix de la connexion, choisissez de continuer sans être identifié. Ensuite, aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
 
 
-  5. Changer le chemin par défault, par celui ou vous avez mis le projet CDA (normalement dans le dossier Documents). Par exemple si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invit de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
+  4. Lancer l'invite de commande windows ![image](https://github.com/Zaroewn/CDA/assets/147649399/1dd67e31-5948-4879-9192-b26b342776e9)
 
-  6. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invit de commande. Attendez que tout soit fini dans l'invit de commande, et vérifier que vous avez la même chose que sur l'image en cliquant sur `containers`, si une des icônes est orange, cliquer sur le petit signe play à côté de celui-ci pour le lancer : ![image](https://github.com/Zaroewn/CDA/assets/147649399/a1ffc0e7-a35a-416e-a42e-ebdc5f4023e2)
 
-  7. Quand tout est fini dans l'invit de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
-  8. copier ce code, et coller le dans l'onglet SQL de phpMyAdmin puis appuyer sur go ou éxécuter. ![image](https://github.com/Zaroewn/CDA/assets/147649399/e7f098ff-8c8a-4f71-82a4-4264a7e7212e)
+  5. Changer le chemin par défaut de l'invite de commande, par celui où vous avez placé le projet CDA (normalement dans le dossier Documents). Par exemple, si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invite de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
+
+  6. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invite de commande. Attendez que tout soit fini dans l'invite de commande, et vérifier que vous avez la même chose que sur l'image en cliquant sur `containers`, si une des icônes est orange, cliquer sur le petit signe play à côté de celui-ci pour le lancer : ![image](https://github.com/Zaroewn/CDA/assets/147649399/a1ffc0e7-a35a-416e-a42e-ebdc5f4023e2)
+
+  7. Quand tout est fini dans l'invite de commande rendez-vous sur l'adresse http://localhost:8082/, rentrer "root" dans username, laisser le mot de passe vide, puis connecter vous à phpMyAdmin.
+  8. Une fois connecter, sélectionner l'onglet "cda" dans le menu à gauche ![image](https://github.com/Zaroewn/CDA/assets/147649399/cd5333a5-36b7-454e-9fef-8d953f7550bd)
+
+ puis copier le code ci-dessous, et collez-le dans l'onglet SQL de phpMyAdmin et appuyer sur go ou éxécuter. ![image](https://github.com/Zaroewn/CDA/assets/147649399/e7f098ff-8c8a-4f71-82a4-4264a7e7212e)
 
   ```
 -- Utilisation de la base de données
@@ -113,4 +115,4 @@ INSERT INTO `commentaires` (`id`, `corps`, `created_at`, `updated_at`, `id_post`
 (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, odio ac interdum congue, libero arcu porttitor risus, eget consectetur odio odio a nibh. Sed sed consectetur sem. Nullam in mollis nunc. Cras interdum libero nec lorem elementum laoreet. Nunc ultricies nunc nec urna sodales pretium.', '2024-02-11 17:34:54', '2024-02-11 17:34:54', 7, 4);
 
   ```
- 10. Une fois toute ces étapes passer, vous devriez avoir accès au projet via l'adresse -> http://localhost:8084/
+ 10. Une fois toutes ces étapes passées, vous devriez avoir accès au projet via l'adresse -> http://localhost:8084/
