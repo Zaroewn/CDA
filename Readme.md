@@ -19,15 +19,13 @@ Nous éxécuturons le projet localement grâce à Docker.
 ## Comment éxécuter le projet localement
 
   1. Télécharger Docker-> https://www.docker.com/get-started/.
-  2. Télécharger le dossier CDA depuis GitHub https://github.com/Zaroewn/CDA.git, dezippez-le et copiez-le dans le dossier Documents. ![image](https://github.com/Zaroewn/CDA/assets/147649399/bced325b-12d0-4528-b04a-05e52ac31e5a)
+  2. Cloner le dossier CDA depuis GitHub https://github.com/Zaroewn/CDA.git. Pour cloner le dossier, copier l'adresse du dépôt (l'adresse est entourée sur l'image juste en dessous, point 3) ensuite, lancer l'invite de commande windows ![image](https://github.com/Zaroewn/CDA/assets/147649399/1dd67e31-5948-4879-9192-b26b342776e9), puis faites un `cd Documents` dans l'invite de commande pour vous rendre dans le dossier Documents. Ensuite, dans l'invite de commande faites un `git clone https://github.com/Zaroewn/CDA.git`. Voilà vous venez de cloner le dépôt dans votre dossier documents (Ne fermez pas l'invite de commande, on le réutilise juste après).
+  3. ![image](https://github.com/Zaroewn/CDA/assets/147649399/1c469cf1-33f8-48a2-a922-a71dc37203ff)
 
-  3. Lancer Docker, au moment du choix de la connexion, choisissez de continuer sans être identifié. Ensuite, aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
-
-
-  4. Lancer l'invite de commande windows ![image](https://github.com/Zaroewn/CDA/assets/147649399/1dd67e31-5948-4879-9192-b26b342776e9)
+  4. Lancer Docker, au moment du choix de la connexion, choisissez de continuer sans être identifié. Ensuite, aller dans les paramètres (petite roue crantée en haut à droite), cocher la ligne, appliquer et relancer Docker. ![image](https://github.com/Zaroewn/CDA/assets/147649399/682b1d2d-6930-47c0-afd1-f9d503b53a3a)
 
 
-  5. Changer le chemin par défaut de l'invite de commande, par celui où vous avez placé le projet CDA (normalement dans le dossier Documents). Par exemple, si vous avez mis le projet dans le dossier documents, faites un `cd Documents\CDA` dans l'invite de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
+  5. Retourner dans l'invite de commande, puis changer le chemin par défaut de l'invite de commande, par celui où vous avez placé le projet CDA (normalement dans le dossier Documents). Par exemple, si vous avez mis le projet dans le dossier documents, faites un `cd CDA` dans l'invite de commande. Vous devez avoir un chemin se terminant par CDA comme ici ![image](https://github.com/Zaroewn/CDA/assets/147649399/f004181f-ae0d-4377-82b6-fe27d61ea16a). Si vous avez mis le dossier CDA autre par que dans Documents, faites juste un `cd` suivi de la bonne route pour arriver au fichier CDA.
 
   6. Une fois dans le bon dossier, faites un `docker-compose up -d` dans l'invite de commande. Attendez que tout soit fini dans l'invite de commande, Aller sur Docker et vérifier que vous avez la même chose que sur l'image en cliquant sur `containers`. Toutes les icônes doivent être verte, si une des icônes est orange, cliquer sur le petit signe play à côté de celui-ci pour le lancer : ![image](https://github.com/Zaroewn/CDA/assets/147649399/a1ffc0e7-a35a-416e-a42e-ebdc5f4023e2)
 
@@ -117,4 +115,4 @@ INSERT INTO `commentaires` (`id`, `corps`, `created_at`, `updated_at`, `id_post`
 (6, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed aliquam, odio ac interdum congue, libero arcu porttitor risus, eget consectetur odio odio a nibh. Sed sed consectetur sem. Nullam in mollis nunc. Cras interdum libero nec lorem elementum laoreet. Nunc ultricies nunc nec urna sodales pretium.', '2024-02-11 17:34:54', '2024-02-11 17:34:54', 7, 4);
 
   ```
- 10. Une fois toutes ces étapes passées, vous devriez avoir accès au projet via l'adresse -> http://localhost:8084/
+ 9. Une fois toutes ces étapes passées, vous devriez normalement avoir accès au projet via l'adresse -> http://localhost:8084/
