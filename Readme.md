@@ -1,4 +1,4 @@
-# Projet CDA
+# Projet CDA / Maxime LAMOTTE
 
 J'ai choisi de créer un projet de type blog, axé sur les livres. Vous aller voir le site comme si vous étiez l'administrateur de celui-ci. Vous pourrez donc, ajouter, modifier et supprimer des articles.
 Le code implémente donc toutes les fonctionnalités CRUD, j'ai choisi la plupart du temps de faire ces fonctionnalités sous type de fonctions pour factoriser au maximum le code et évité les répétitions.
